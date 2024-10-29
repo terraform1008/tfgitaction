@@ -56,6 +56,16 @@ jobs:
     - name: Terraform Init
       id: init
       run: terraform init
+  
+  terraform-Build:
+    name: 'Terraform Deploy'
+    runs-on: ubuntu-latest
+    
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    
+    - name: Checkout
+      uses: actions/checkout@v4
 
     - name: Terraform Plan
       id: plan
@@ -64,5 +74,5 @@ jobs:
     - name: Terraform Apply
       run: terraform apply -auto-approve
     
-    - name: Terraform Destroy
-      run: terraform destroy -auto-approve
+    #- name: Terraform Destroy
+    #  run: terraform destroy -auto-approve
