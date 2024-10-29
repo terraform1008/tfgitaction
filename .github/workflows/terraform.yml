@@ -82,6 +82,9 @@ jobs:
       uses: hashicorp/setup-terraform@v3
       with:
         terraform_wrapper: false
+
+    - name: Terraform init
+      run: terraform init
      
     - name: Terraform Apply
       run: terraform apply -auto-approve
