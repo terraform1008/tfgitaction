@@ -26,8 +26,8 @@ defaults:
      working-directory: src
 
 jobs:
-  terraform-plan:
-    name: 'Terraform Plan'
+  terraform-Init:
+    name: 'Terraform Init'
     runs-on: ubuntu-latest
 
     env:
@@ -57,10 +57,23 @@ jobs:
       id: init
       run: terraform init
 
+  terraform-Plan:
+    name: 'Terraform Plan'
+    runs-on: ubuntu-latest
+    needs: terraform-Init
+    
+    steps:
+    
     - name: Terraform Plan
       id: plan
       run: terraform plan -no-color
-   
+
+  terraform-Apply:
+    name: 'Terraform Apply'
+    runs-on: ubuntu-latest
+    needs: terraform-Plan
+    
+    steps:   
     - name: Terraform Apply
       run: terraform apply -auto-approve
     
