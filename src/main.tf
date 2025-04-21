@@ -12,7 +12,7 @@ terraform {
     storage_account_name = "gitauto"
     container_name       = "terraformbackend"
     key                  = "dev.tfstate"
-    use_oidc             = true
+    #use_oidc             = true
   }
 }
 
